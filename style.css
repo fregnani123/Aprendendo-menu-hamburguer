@@ -1,0 +1,137 @@
+
+/* Inicio da estrutura do Menu - cabeçalho tela sem responsividade */
+:root {
+    --cor1:black; /*cor linhas menu*/
+    --cor2:black; /*cor nome menu*/
+    --cor3:black; /*cor links do menu */
+} 
+ 
+*{
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+a:hover {
+    background: rgba(0, 0, 0, 0.35)
+}
+
+#logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#header{ 
+    box-sizing: border-box;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    justify-content:space-between;
+    background-color: rgb(208, 208, 208);
+}
+
+#menu{display: flex;
+list-style: none;
+gap: .5rem;
+;
+}
+
+#menu a {color: var(--cor3);
+    display: block;
+    padding: .5rem;
+
+}
+/* fim da estrutura do Menu e cabeçalho quando a tela está sem responsividade */
+
+#btn-mobile {display: none;}
+
+/* Inicio menu mobile telas menores */
+
+@media (max-width: 600px){
+
+   #btn-mobile {display: block;
+}
+
+#menu {
+    display: block;
+ /*Agora desta parte para baixo vamos dar estilo a folha do menu quando está ativa */
+position: absolute;/*sobrepor todas*/
+width: 100%;
+top: 70px;
+right: 0px;
+background-color: grey;
+height:0px;
+transition: .6s;
+z-index:1000;
+visibility: hidden; /* Esconde o menu na animação */ 
+overflow-y:hidden ; /*na animação sincroniza os objetos com o visibility*/
+/*overflow-y:auto; ativar se o menu tiver mais itens cria barra de rolagem*/
+} 
+
+
+#nav.active #menu {
+      height: calc(100vh - 70px); /* altura da tela - o do topo */
+    display: block;
+    visibility: visible; /* mostra os itens do menu na animação*/
+}
+
+#menu a { padding: 1rem 0;
+    margin:0 1rem ;
+    border-bottom: 2px solid rgba(0, 0, 0, .05);
+}
+
+/*estilizando o botão */ #btn-mobile { 
+    display: flex;
+    font-size: 1rem;
+    border:none;
+    background: none;
+    cursor: pointer;color: var(--cor2)
+    ;
+}
+
+#hamburguer {margin-top: -10px;} 
+
+
+.linha1 {
+    width: 20px;
+    height: 2px;
+    border-top: 2px solid;
+    margin: 5px;
+    color: var(--cor1);
+    }
+
+.linha2   {
+    width: 20px;
+    height: 2px;
+    border-top: 2px solid;
+    margin: 5px;color: var(--cor1);}
+
+.linha3  {
+    width: 20px;
+    height: 2px;
+    border-top: 2px solid;
+    margin: 5px;
+    color: var(--cor1);}  
+
+#nav.active .linha1 {/* quando ativa o menu some a linha1 */
+    border-top-color: transparent; 
+}
+
+#nav.active .linha2 {
+    transform: rotate(135deg);transition: .3s;
+    position: relative;
+}
+
+#nav.active .linha3 {
+    transform: rotate(-135deg);top:-9px;position: relative;
+    transition: .3s;
+
+}
+}
+
