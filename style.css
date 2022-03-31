@@ -82,56 +82,62 @@ overflow-y:hidden ; /*na animação sincroniza os objetos com o visibility*/
 }
 
 #menu a { padding: 1rem 0;
-    margin:0 1rem ;
-    border-bottom: 2px solid rgba(0, 0, 0, .05);
+     margin:0 1rem;
+     border-bottom: 2px solid rgba(0, 0, 0, .05);
 }
 
-/*estilizando o botão */ #btn-mobile { 
+#btn-mobile { /*estilizando o button */ 
     display: flex;
+    padding: .5rem 1rem;
     font-size: 1rem;
     border:none;
     background: none;
-    cursor: pointer;color: var(--cor2)
+    cursor: pointer;
+    color: var(--cor2)
     ;
 }
 
-#hamburguer {margin-top: -10px;} 
+#hamburguer {
+    display: block;
+    width: 20px;
+    border-top: 2px solid;
+    margin-left: 5px;
+    color: var(--cor1);
+} 
+    
 
-
-.linha1 {
+#hamburguer::after{
+    content: '';
     width: 20px;
     height: 2px;
-    border-top: 2px solid;
-    margin: 5px;
-    color: var(--cor1);
+    display: block;
+    margin-top: 5px;
+    transition: .3s;
+    position: relative; /*position relative para alinhar o X do menu. */
+    background:currentColor;
+
+    
     }
 
-.linha2   {
+#hamburguer::before {
+    content: '';
     width: 20px;
     height: 2px;
-    border-top: 2px solid;
-    margin: 5px;color: var(--cor1);}
+    display: block;
+    margin-top: 5px;
+    background: currentColor;
 
-.linha3  {
-    width: 20px;
-    height: 2px;
-    border-top: 2px solid;
-    margin: 5px;
-    color: var(--cor1);}  
+    }   
 
-#nav.active .linha1 {/* quando ativa o menu some a linha1 */
-    border-top-color: transparent; 
-}
+nav.active #hamburguer {border-top-color: transparent; /*ativa com o nav e deixa o 1º traço trasparente */ }
 
-#nav.active .linha2 {
-    transform: rotate(135deg);transition: .3s;
-    position: relative;
-}
+nav.active #hamburguer::before { transform: rotate(135deg);} 
 
-#nav.active .linha3 {
-    transform: rotate(-135deg);top:-9px;position: relative;
-    transition: .3s;
+nav.active #hamburguer::after { transform: rotate(-135deg);
+   top:-7px
+ }
 
 }
-}
+
+
 
